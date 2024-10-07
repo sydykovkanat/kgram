@@ -15,5 +15,5 @@ const corsOptions: CorsOptions = {
 export const config = {
   port: 8000,
   corsOptions,
-  database: 'mongodb://localhost/auth',
+  database: 'mongodb://localhost/kgram',
 };

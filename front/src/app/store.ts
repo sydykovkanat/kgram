@@ -4,7 +4,7 @@ import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, pers
 import storage from 'redux-persist/lib/storage';
 
 const usersPersistConfig = {
-  key: 'auth:users',
+  key: 'kgram:users',
   storage,
   whitelist: ['user'],
 };

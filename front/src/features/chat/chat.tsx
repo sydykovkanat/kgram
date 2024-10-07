@@ -1,12 +1,13 @@
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
-import { Button } from '@/components/ui/button';
+import { Sidebar } from '@/features/chat/components/sidebar/sidebar';
 import { selectUser } from '@/features/users/usersSlice';
 import { logout } from '@/features/users/usersThunks';
-import { LogOut } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import React, { useEffect } from 'react';
+import styles from './chat.module.css';
 import { useNavigate } from 'react-router-dom';
 
-export const Home: React.FC = () => {
+export const Chat: React.FC = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectUser);
   const navigate = useNavigate();
@@ -30,14 +31,13 @@ export const Home: React.FC = () => {
   };
 
   return (
-    <div className={'grid place-items-center h-screen'}>
-      <div className={'flex flex-col gap-2'}>
-        <h1 className={'bg-gray-200 px-3 py-1 rounded-md inline-block text-sm'}>Username - {user.username}</h1>
-        <h1 className={'bg-gray-200 px-3 py-1 rounded-md text-sm'}>ID - {user._id}</h1>
-        <h1 className={'bg-gray-200 px-3 py-1 rounded-md text-sm'}>Token - {user.token}</h1>
-        <Button onClick={handleLogout}>
-          Logout <LogOut className={'size-4 ml-2'} />
-        </Button>
+    <div className={'flex gap-4'}>
+      <Sidebar />
+
+      <div className={cn('w-full bg-muted h-screen rounded-xl p-2 border', styles.chat)}>
+        <button onClick={handleLogout} className={'bg-red-500 text-white p-2 rounded-lg'}>
+          Logout
+        </button>
       </div>
     </div>
   );
