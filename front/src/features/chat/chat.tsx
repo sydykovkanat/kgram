@@ -1,8 +1,13 @@
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
+import { Message } from '@/features/chat/components/message/message';
 import { Sidebar } from '@/features/chat/components/sidebar/sidebar';
 import { selectUser } from '@/features/users/usersSlice';
 import { logout } from '@/features/users/usersThunks';
 import { cn } from '@/lib/utils';
+import { RocketIcon } from '@radix-ui/react-icons';
+import { SendIcon } from 'lucide-react';
 import React, { useEffect } from 'react';
 import styles from './chat.module.css';
 import { useNavigate } from 'react-router-dom';
@@ -34,10 +39,22 @@ export const Chat: React.FC = () => {
     <div className={'flex gap-4'}>
       <Sidebar />
 
-      <div className={cn('w-full bg-muted h-screen rounded-xl p-2 border', styles.chat)}>
-        <button onClick={handleLogout} className={'bg-red-500 text-white p-2 rounded-lg'}>
-          Logout
-        </button>
+      <div className={'flex flex-col w-full gap-3'}>
+        <div className={cn('w-full bg-muted h-[84vh] overflow-hidden rounded-xl p-2 border', styles.chat)}>
+          <ul className={'flex flex-col gap-2 overflow-y-scroll h-full rounded-md'}>
+            <Message />
+          </ul>
+        </div>
+        <div className={'relative h-[6.2rem]'}>
+          <Textarea
+            className={'h-full bg-muted focus-visible:ring-0 focus-visible:border-gray-400 resize-none'}
+            placeholder={'Enter your message...'}
+          />
+
+          <Button size={'icon'} className={'absolute bottom-2 right-2'}>
+            <RocketIcon />
+          </Button>
+        </div>
       </div>
     </div>
   );

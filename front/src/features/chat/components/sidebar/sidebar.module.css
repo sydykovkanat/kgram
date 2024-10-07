@@ -1,5 +1,4 @@
-.sidebar,
-.chat {
+.sidebar {
   max-height: calc(100vh - 2rem);
 }
 
