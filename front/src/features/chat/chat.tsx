@@ -40,20 +40,25 @@ export const Chat: React.FC = () => {
       <Sidebar />
 
       <div className={'flex flex-col w-full gap-3'}>
-        <div className={cn('w-full bg-muted h-[84vh] overflow-hidden rounded-xl p-2 border', styles.chat)}>
+        <div
+          className={cn(
+            'w-full bg-muted h-screen overflow-hidden rounded-xl p-2 border flex flex-col justify-between',
+            styles.chat
+          )}
+        >
           <ul className={'flex flex-col gap-2 overflow-y-scroll h-full rounded-md'}>
             <Message />
           </ul>
-        </div>
-        <div className={'relative h-[6.2rem]'}>
-          <Textarea
-            className={'h-full bg-muted focus-visible:ring-0 focus-visible:border-gray-400 resize-none'}
-            placeholder={'Enter your message...'}
-          />
-
-          <Button size={'icon'} className={'absolute bottom-2 right-2'}>
-            <RocketIcon />
-          </Button>
+          <div className={'flex relative'}>
+            <Textarea
+              rows={3}
+              className={'max-h-24 h-full bg-muted focus-visible:ring-0 focus-visible:border-gray-400 resize-none'}
+              placeholder={'Enter your message...'}
+            />
+            <Button size={'icon'} className={'absolute right-2 bottom-2'}>
+              <RocketIcon />
+            </Button>
+          </div>
         </div>
       </div>
     </div>

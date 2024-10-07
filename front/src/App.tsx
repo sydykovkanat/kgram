@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 
 export const App: React.FC = () => {
   return (
-    <div className={'container mx-auto p-4'}>
+    <div className={'container mx-auto p-4 min-w-[768px]'}>
       <Routes>
         <Route path={'/'} element={<Chat />} />
         <Route path={'/login'} element={<Login />} />

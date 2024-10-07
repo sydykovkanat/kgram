@@ -11,9 +11,12 @@ export const Sidebar: React.FC<Props> = ({ className }) => {
   return (
     <div className={cn('max-w-xs w-full bg-muted h-screen rounded-xl p-2 pt-0 border', styles.sidebar, className)}>
       <main>
-        <ul className={'mt-2'}>
+        <ul className={'mt-2 flex flex-col gap-2'}>
           <li
-            className={cn('p-1 px-2 rounded-lg bg-gray-200 text-sm flex items-center gap-1 shadow-card', styles.online)}
+            className={cn(
+              'p-1 px-2 rounded-lg bg-gray-200 text-sm flex items-center gap-1 shadow-card border',
+              styles.online
+            )}
           >
             <PersonIcon />
             Kanat
