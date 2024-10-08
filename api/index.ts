@@ -26,7 +26,7 @@ chatRouter.ws('/chat', async (ws, _req) => {
   const id = crypto.randomUUID();
   activeConnections[id] = ws;
   let username: UserOnline;
-  const messages: MessageApi[] = await Message.find().populate('userId', 'avatar googleID displayName');
+  const messages: MessageApi[] = await Message.find().populate('userId', 'displayName');
 
   ws.send(
     JSON.stringify({
