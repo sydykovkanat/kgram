@@ -11,6 +11,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const initialState: RegisterMutation = {
   username: '',
   password: '',
+  displayName: '',
 };
 
 export const Register: React.FC = () => {
@@ -19,9 +20,10 @@ export const Register: React.FC = () => {
   const error = useAppSelector(selectRegisterError);
   const navigate = useNavigate();
   const [registerMutation, setRegisterMutation] = useState<RegisterMutation>(initialState);
-  const [inputErrors, setInputErrors] = useState<{ username: boolean; password: boolean }>({
+  const [inputErrors, setInputErrors] = useState<{ username: boolean; password: boolean; displayName: boolean }>({
     username: false,
     password: false,
+    displayName: false,
   });
 
   const getFieldError = (field: string) => {
@@ -41,6 +43,7 @@ export const Register: React.FC = () => {
       const errors = {
         username: !registerMutation.username,
         password: !registerMutation.password,
+        displayName: !registerMutation.displayName,
       };
 
       setInputErrors(errors);
@@ -90,6 +93,17 @@ export const Register: React.FC = () => {
                 type={'password'}
                 autoComplete={'new-password'}
                 className={inputErrors.password ? 'ring-red-600 ring-1 focus-visible:ring-red-600' : ''}
+              />
+
+              <UsersInput
+                onChange={handleChange}
+                name={'displayName'}
+                label={'Display Name'}
+                error={getFieldError('displayName')}
+                value={registerMutation.displayName}
+                placeholder={'Enter your display name'}
+                autoComplete={'current-username'}
+                className={inputErrors.displayName ? 'ring-red-600 ring-1 focus-visible:ring-red-600' : ''}
               />
 
               <Button type={'submit'} disabled={loading} className={'select-none'}>
