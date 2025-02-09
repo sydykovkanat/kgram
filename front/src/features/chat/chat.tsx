@@ -24,7 +24,7 @@ export const Chat: React.FC = () => {
     if (!user) {
       navigate('/register');
     } else {
-      ws.current = new WebSocket('ws://192.168.8.185:8000/chat');
+      ws.current = new WebSocket('ws://localhost:8000/chat');
 
       ws.current?.addEventListener('message', (event) => {
         const decodedMessage = JSON.parse(event.data) as IncomingMessage;
